@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolVibe — Page 2.1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="page2.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD700',
+                        secondary: '#B8860B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-animation">
+    <!-- Top Navigation Bar -->
+    <div class="fixed top-3 left-0 right-0 z-50 pointer-events-none">
+        <div class="top-notch pointer-events-auto">
+            <!-- Logo -->
+            <div class="logo-section">
+                <a href="page1.html" class="home-logo-link">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-primary drop-shadow">ToolVibe</h1>
+                </a>
+            </div>
+
+            <!-- Navigation Menu (Desktop) -->
+            <nav class="nav-menu hidden lg:flex">
+                <a href="page1.html" class="nav-link">Home</a>
+                <a href="page2.html" class="nav-link">Shop</a>
+                <a href="#promotions" class="nav-link">Promotions</a>
+                <a href="page3.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Right Section: Icons + Search -->
+            <div class="flex items-center gap-4">
+                <!-- Action Icons -->
+                <div class="widgets">
+                    <button class="icon-btn" title="Favorites" aria-label="Favorites">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21s-7-4.35-9.17-6.36C.9 12.97 2 8.5 5.64 6.5 8 5 10 6 12 8c2-2 4-3 6.36-1.5C22 8.5 23.1 12.97 21.17 14.64 19 16.65 12 21 12 21z"/>
+                        </svg>
+                    </button>
+                    <button class="icon-btn icon-badge" title="Cart" aria-label="Cart">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.45A1 1 0 0 0 10 20h8v-2H10.42c-.14 0-.25-.08-.31-.2L9.1 16h7.45a1 1 0 0 0 .93-.64l1.7-4.3A1 1 0 0 0 18.2 9H6.21l-.94-2H1V5h4l1 2h13v2H7z"/>
+                        </svg>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="icon-btn" title="Account" aria-label="Account">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+                        </svg>
+                    </button>
+                    <div id="account-modal" style="display:none; position:fixed; top:200px; left:50%; transform:translateX(-50%); width:550px; height:550px; background:rgba(30,30,30,0.98); border-radius:32px; box-shadow:0 8px 48px rgba(0,0,0,0.7); z-index:9999; color:#FFD700; padding:48px; overflow:hidden;">
+                        <!-- Форма авторизации и регистрации из тест1 -->
+                        <link rel="stylesheet" href="1.css">
+                        <div class="auth-overlay" style="position:static; background:none; box-shadow:none; border-radius:0; color:inherit; padding:0; width:auto; height:auto;">
+                            <div class="auth-window">
+                                <h2 class="auth-title">Вход в аккаунт</h2>
+                                <form id="loginForm" class="auth-form">
+                                    <input type="email" placeholder="Электронная почта" required>
+                                    <input type="password" placeholder="Пароль" required>
+                                    <button type="submit" class="auth-btn">Войти</button>
+                                </form>
+                                <p class="auth-switch">
+                                    Нет аккаунта?
+                                    <span id="openRegister">Создать</span>
+                                </p>
+                            </div>
+                            <div class="auth-window hidden" id="registerWindow">
+                                <h2 class="auth-title">Регистрация</h2>
+                                <form id="registerForm" class="auth-form">
+                                    <input type="text" placeholder="Имя" required>
+                                    <input type="email" placeholder="Электронная почта" required>
+                                    <input type="password" placeholder="Пароль" required>
+                                    <button type="submit" class="auth-btn">Создать аккаунт</button>
+                                </form>
+                                <p class="auth-switch">
+                                    Уже есть аккаунт?
+                                    <span id="openLogin">Войти</span>
+                                </p>
+                            </div>
+                        </div>
+                        <script src="1.js"></script>
+                    </div>
+                    </button>
+                </div>
+
+                <!-- Search Bar (Right Corner) -->
+                <div class="search-container hidden md:flex">
+                    <div class="search-wrap-header">
+                        <input class="search-input-header" placeholder="Search..." />
+                        <svg class="search-icon-header" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="6"></circle>
+                            <line x1="18.5" y1="18.5" x2="14" y2="14"></line>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="icon-btn lg:hidden" id="mobile-menu-btn" title="Menu" aria-label="Menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                        <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                        <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="page1.html" class="mobile-menu-link">Home</a>
+        <a href="page2.html" class="mobile-menu-link">Shop</a>
+        <a href="#promotions" class="mobile-menu-link">Promotions</a>
+        <a href="page3.html" class="mobile-menu-link">Contact</a>
+        <div class="mobile-search">
+            <input class="search-input-mobile" placeholder="Search tools, materials..." />
+        </div>
+    </div>
+
+    <section class="bottom-section">
+        <div class="container-grid">
+            <!-- Current Promotions (Empty) -->
+            <div class="promotions-column">
+                <h3 class="section-title">CURRENT PROMOTIONS</h3>
+                <div class="promo-list">
+                    <div class="empty-state">
+                        <p class="empty-text">No current promotions available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Popular Products (Empty) -->
+            <div class="products-column">
+                <h3 class="section-title">TOP POPULAR PRODUCTS</h3>
+                <div class="products-grid">
+                    <div class="empty-state-grid">
+                        <p class="empty-text">No products to display</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">ToolVibe</h4>
+                <p class="footer-text">Your trusted partner for professional power tools and construction equipment.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <a href="page3.html" class="footer-link">About Us</a>
+                <a href="page3.html" class="footer-link">Products</a>
+                <a href="page3.html" class="footer-link">Support</a>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Contact</h4>
+                <p class="footer-text">Email: info@toolvibe.com</p>
+                <p class="footer-text">Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ToolVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="page2.js"></script>
+</body>
+</html>

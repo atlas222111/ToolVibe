@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolVibe - Power Tools & Construction Equipment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="page1.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD700',
+                        secondary: '#B8860B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-animation">
+    <div class="fixed top-3 left-0 right-0 z-50 pointer-events-none">
+        <div class="top-notch pointer-events-auto">
+            <div class="logo-section">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-primary drop-shadow">ToolVibe</h1>
+            </div>
+
+            <nav class="nav-menu hidden lg:flex">
+                <a href="page1.html" class="nav-link">Home</a>
+                <a href="page2.html" class="nav-link">Shop</a>
+                <a href="#promotions" class="nav-link">Promotions</a>
+                <a href="page3.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <!-- Action Icons -->
+                <div class="widgets">
+                    <button class="icon-btn" title="Favorites" aria-label="Favorites">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21s-7-4.35-9.17-6.36C.9 12.97 2 8.5 5.64 6.5 8 5 10 6 12 8c2-2 4-3 6.36-1.5C22 8.5 23.1 12.97 21.17 14.64 19 16.65 12 21 12 21z"/>
+                        </svg>
+                    </button>
+                    <button class="icon-btn icon-badge" title="Cart" aria-label="Cart">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.45A1 1 0 0 0 10 20h8v-2H10.42c-.14 0-.25-.08-.31-.2L9.1 16h7.45a1 1 0 0 0 .93-.64l1.7-4.3A1 1 0 0 0 18.2 9H6.21l-.94-2H1V5h4l1 2h13v2H7z"/>
+                        </svg>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="icon-btn" title="Account" aria-label="Account">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+                        </svg>
+                    </button>
+                    <div id="account-modal" style="display:none; position:fixed; top:100px; left:50%; transform:translateX(-50%); width: 550px; height: 550px; border-radius:32px; box-shadow:0 8px 48px rgba(0,0,0,0.7); z-index:9999; color:#FFD700; padding:48px; overflow:auto;">
+                        <link rel="stylesheet" href="page1.css">
+                        <div class="auth-overlay">
+                            <div class="auth-window" style="background:rgba(0, 0, 0, 0.98);">
+                                <h2 class="auth-title">Вход в аккаунт</h2>
+                                <form id="loginForm" class="auth-form">
+                                    <input type="email" placeholder="Электронная почта" required>
+                                    <input type="password" placeholder="Пароль" required>
+                                    <button type="submit" class="auth-btn">Войти</button>
+                                </form>
+                                <div id="login-success-block" style="display:none; text-align:center; margin-top:24px;">
+                                    <div style="color:#FFD700; font-size:20px;">Вы успешно вошли!</div>
+                                    <button id="logoutBtn" style="margin-top:16px; padding:8px 20px; background:#FFD700; color:#222; border-radius:8px; border:none; font-weight:bold; cursor:pointer;">Выйти</button>
+                                </div>
+                                <p class="auth-switch">
+                                    Нет аккаунта?
+                                    <span id="openRegister">Создать</span>
+                                </p>
+                            </div>
+                            <div class="auth-window hidden" id="registerWindow">
+                                <h2 class="auth-title">Регистрация</h2>
+                                <form id="registerForm" class="auth-form">
+                                    <input type="text" placeholder="Имя" required>
+                                    <input type="email" placeholder="Электронная почта" required>
+                                    <input type="password" placeholder="Пароль" required>
+                                    <button type="submit" class="auth-btn">Создать аккаунт</button>
+                                </form>
+                                <p class="auth-switch">
+                                    Уже есть аккаунт?
+                                    <span id="openLogin">Войти</span>
+                                </p>
+                            </div>
+                        </div>
+                        <script src="page1.js"></script>
+                    </div>
+                    </button>
+                </div>
+
+                <div class="search-container hidden md:flex">
+                    <div class="search-wrap-header">
+                        <input class="search-input-header" placeholder="Search..." />
+                        <svg class="search-icon-header" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="6"></circle>
+                            <line x1="18.5" y1="18.5" x2="14" y2="14"></line>
+                        </svg>
+                    </div>
+                </div>
+
+                <button class="icon-btn lg:hidden" id="mobile-menu-btn" title="Menu" aria-label="Menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+                        <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/>
+                        <line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="page1.html" class="mobile-menu-link">Home</a>
+        <a href="page2.html" class="mobile-menu-link">Shop</a>
+        <a href="#promotions" class="mobile-menu-link">Promotions</a>
+        <a href="page3.html" class="mobile-menu-link">Contact</a>
+        <div class="mobile-search">
+            <input class="search-input-mobile" placeholder="Search tools, materials..." />
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <!-- Background Tools -->
+            <div class="background-tools">
+                <div class="tool-bg tool-hammer" data-category="Hand Tools">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="60" width="8" height="35" fill="#8B4513" rx="2"/>
+                        <path d="M 35 55 L 53 55 L 55 45 L 33 45 Z" fill="#FFD700"/>
+                        <path d="M 35 40 Q 30 35 35 30 L 40 35 Z" fill="#FFD700"/>
+                    </svg>
+                </div>
+
+                <!-- Wrench (Top Right) -->
+                <div class="tool-bg tool-wrench" data-category="Wrenches">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 20 50 L 40 50 L 40 45 L 50 45 L 55 50 L 55 55 L 50 60 L 40 60 L 40 55 L 20 55 Z" fill="#C0C0C0"/>
+                        <circle cx="60" cy="55" r="8" fill="none" stroke="#C0C0C0" stroke-width="3"/>
+                    </svg>
+                </div>
+
+                <!-- Screwdriver (Bottom Left) -->
+                <div class="tool-bg tool-screwdriver" data-category="Screwdrivers">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="45" y="60" width="6" height="30" fill="#FFA500" rx="1"/>
+                        <rect x="46" y="35" width="4" height="25" fill="#C0C0C0"/>
+                        <path d="M 46 33 L 50 33 L 49 38 L 47 38 Z" fill="#C0C0C0"/>
+                    </svg>
+                </div>
+
+                <!-- Saw (Bottom Right) -->
+                <div class="tool-bg tool-saw" data-category="Saws">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="45" width="50" height="3" fill="#C0C0C0"/>
+                        <path d="M 25 45 L 30 40 L 35 45 L 40 40 L 45 45 L 50 40 L 55 45 L 60 40 L 65 45 L 70 40 L 75 45" stroke="#FFD700" stroke-width="1.5" fill="none"/>
+                        <rect x="20" y="40" width="6" height="12" fill="#8B4513" rx="2"/>
+                    </svg>
+                </div>
+
+                <!-- Pliers (Left Middle) -->
+                <div class="tool-bg tool-pliers" data-category="Pliers">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 30 40 L 35 50 L 40 50 L 40 45 L 30 40 Z" fill="#C0C0C0"/>
+                        <path d="M 50 40 L 45 50 L 40 50 L 40 45 L 50 40 Z" fill="#C0C0C0"/>
+                        <ellipse cx="40" cy="52" rx="3" ry="5" fill="#4a4a4a"/>
+                    </svg>
+                </div>
+
+                <!-- Measuring Tape (Right Middle) -->
+                <div class="tool-bg tool-tape" data-category="Measuring Tools">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="35" y="40" width="25" height="20" fill="#FFD700" rx="3"/>
+                        <rect x="38" y="43" width="19" height="14" fill="#1a1a1a" rx="2"/>
+                        <path d="M 60 50 Q 70 50 70 55" stroke="#FFD700" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Main Drill Image -->
+            <div class="drill-container">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='body' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFD700'/%3E%3Cstop offset='50%25' style='stop-color:%23FFC700'/%3E%3Cstop offset='100%25' style='stop-color:%23B8860B'/%3E%3C/linearGradient%3E%3ClinearGradient id='handle' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232a2a2a'/%3E%3Cstop offset='100%25' style='stop-color:%230a0a0a'/%3E%3C/linearGradient%3E%3CradialGradient id='motor'%3E%3Cstop offset='0%25' style='stop-color:%233a3a3a'/%3E%3Cstop offset='100%25' style='stop-color:%231a1a1a'/%3E%3C/radialGradient%3E%3C/defs%3E%3C!-- Handle --%3E%3Crect x='150' y='160' width='80' height='140' fill='url(%23handle)' rx='15'/%3E%3Crect x='155' y='165' width='70' height='50' fill='%23000' opacity='0.3' rx='8'/%3E%3C!-- Battery --%3E%3Crect x='160' y='280' width='60' height='80' fill='%23000' rx='8'/%3E%3Crect x='170' y='290' width='40' height='15' fill='%23FFD700' opacity='0.4' rx='3'/%3E%3C!-- Trigger --%3E%3Crect x='215' y='190' width='20' height='30' fill='%23FFD700' rx='4'/%3E%3C!-- Main Body --%3E%3Crect x='220' y='150' width='180' height='100' fill='url(%23body)' rx='20'/%3E%3Cellipse cx='390' cy='200' rx='15' ry='50' fill='url(%23body)'/%3E%3C!-- Details --%3E%3Crect x='280' y='170' width='50' height='25' fill='%23000' opacity='0.2' rx='5'/%3E%3Ccircle cx='350' cy='200' r='25' fill='%23000' opacity='0.3'/%3E%3C!-- Vents --%3E%3Crect x='260' y='180' width='30' height='3' fill='%23000' opacity='0.4' rx='1.5'/%3E%3Crect x='260' y='190' width='30' height='3' fill='%23000' opacity='0.4' rx='1.5'/%3E%3Crect x='260' y='200' width='30' height='3' fill='%23000' opacity='0.4' rx='1.5'/%3E%3C!-- Motor Housing --%3E%3Ccircle cx='420' cy='200' r='45' fill='url(%23motor)'/%3E%3Ccircle cx='420' cy='200' r='35' fill='%232a2a2a'/%3E%3C!-- Chuck --%3E%3Ccircle cx='470' cy='200' r='30' fill='%23333'/%3E%3Ccircle cx='470' cy='200' r='20' fill='%23444'/%3E%3Cline x1='470' y1='180' x2='470' y2='220' stroke='%23222' stroke-width='2'/%3E%3Cline x1='450' y1='200' x2='490' y2='200' stroke='%23222' stroke-width='2'/%3E%3C!-- Drill Bit --%3E%3Crect x='495' y='197' width='80' height='6' fill='%23666'/%3E%3Cpolygon points='575,200 585,197 585,203' fill='%23888'/%3E%3C!-- Shadows --%3E%3Cellipse cx='300' cy='250' rx='150' ry='20' fill='%23000' opacity='0.2'/%3E%3C/svg%3E" alt="Power Drill" class="drill-image">
+                <!-- Spark Effects -->
+                <div class="spark spark-1"></div>
+                <div class="spark spark-2"></div>
+                <div class="spark spark-3"></div>
+                <div class="spark spark-4"></div>
+            </div>
+
+            <!-- Hero Text -->
+            <h2 class="hero-title">POWER IN<br>YOUR HANDS</h2>
+            
+            <!-- CTA Button -->
+            <a class="cta-button" href="page2.html">
+                Shop Now
+                <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">Free Shipping</h3>
+                <p class="feature-text">On orders over $100</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Secure Payment</h3>
+                <p class="feature-text">100% secure transactions</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Fast Delivery</h3>
+                <p class="feature-text">2-3 business days</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Quality Guarantee</h3>
+                <p class="feature-text">1 year warranty</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Section: Promotions & Products -->
+    <section class="bottom-section">
+        <div class="container-grid">
+            <!-- Current Promotions (Empty) -->
+            <div class="promotions-column">
+                <h3 class="section-title">CURRENT PROMOTIONS</h3>
+                <div class="promo-list">
+                    <div class="empty-state">
+                        <p class="empty-text">No current promotions available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Popular Products (Empty) -->
+            <div class="products-column">
+                <h3 class="section-title">TOP POPULAR PRODUCTS</h3>
+                <div class="products-grid">
+                    <div class="empty-state-grid">
+                        <p class="empty-text">No products to display</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">ToolVibe</h4>
+                <p class="footer-text">Your trusted partner for professional power tools and construction equipment.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <a href="page3.html" class="footer-link">About Us</a>
+                <a href="page3.html" class="footer-link">Products</a>
+                <a href="page3.html" class="footer-link">Support</a>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Contact</h4>
+                <p class="footer-text">Email: info@toolvibe.com</p>
+                <p class="footer-text">Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ToolVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="page1.js"></script>
+</body>
+</html>
